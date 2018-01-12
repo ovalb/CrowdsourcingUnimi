@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Crowdsourcing database project!</h2>
+    <?php
+        echo "<h2>Crowdsourcing database project!</h2>"
+    ?>
 </body>
 </html>
