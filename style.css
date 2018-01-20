@@ -1,3 +1,108 @@
+
 body {
-    color: yellowgreen;
+    margin: 0px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #a7cccc;
+    height: 100%;
+
+}
+
+header {
+    color:white;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+    background-color: #555;
+    background-image: url(img/black_keyboard.jpg);
+    background-size: cover;
+    height: 300px;
+    padding: 30px;
+}
+
+header h1 {
+    margin: 0px;
+}
+
+.join_container {
+    width: 70%;
+    height: 300px;
+    margin: auto;
+    margin-top: -60px;
+    padding: 0px;
+    /* background-color: green; */
+}
+
+.single_join_block {
+  display: inline-block;
+  vertical-align: middle;
+  width: 45%;
+  height: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 10px 6px -6px black;
+
+  /* border: 1px solid; */
+}
+
+.single_join_block#requester {
+    /* margin-right: 16px; */
+    float: right;
+}
+
+.single_join_block button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    border-radius: 0px;
+    width: 200px;
+    margin: auto;
+}
+
+#worker button {
+    background-color: #4CAF50;
+}
+
+#requester button {
+    background-color: rgb(175, 76, 150);
+}
+
+a.needtologin {
+    display: block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    width: fit-content;
+    margin: auto;
+}
+
+.description {
+    color: #555;
+    padding: 16px;
+    margin: 0px;
+
+}
+
+footer {
+    font-size: 13px;
+    color: white ;
+    background-color: #555;
+    border-top: 1px solid;
+    border-color: #777;
+
+    padding: 10px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    /* z-index: -1; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: end;
 }
