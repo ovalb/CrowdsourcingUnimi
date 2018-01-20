@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css?<?php echo time(); ?>" type="text/css" >
+    <link rel="stylesheet" href="style.css" type="text/css" >
     <title>Crowdsourcing</title>
 </head>
 <body>
