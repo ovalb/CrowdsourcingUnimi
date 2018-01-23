@@ -7,9 +7,9 @@
 </head>
 <body>
     <header>
-        <!-- <img src=img/black_keyboard.jpg alt="black-keyboard" width="100%" height="400px"> -->
-        <h1> CROWDSAUCING </h1>
-        <p>Welcome to the crowdsourcing university project for the database course</p>
+        <h1> CROWDSOURCING </h1>
+        <p class='subtitle'>An unoriginal name for my db project app.<p>
+            Welcome to the crowdsourcing university project for the Database Course</p>
         <p>Universitá Statale di Milano.</p>
     </header>
 
@@ -17,22 +17,27 @@
         <section id="worker" class="single_join_block"> 
             <button> Join as a worker </button>
             <a href="#" class="needtologin"> Already have an account? Sign in </a>
-            <p class="description">
-                Description for what a worker is and what it does
-                The worker has the job of working a lot balbalbal amazing
-                Description for what a worker is and what it does
-                The worker has the job of working a lot balbalbal amazing
-            </p>
+            <div class="description">
+                <p>
+                Workers are users who perform tasks.
+                </p>
+                <p>They have a profile that includes certain keywords which represent
+                    the worker's affiliations and knowledge on specific topics.
+                 </p>
+            </div>
         </section><section id="requester" class="single_join_block">
             <button> Join as a requester </button>
 
             <a href="#" class="needtologin"> Already have an account? Sign in </a>
-            <p class="description">
-                Description for what a requester is and what it does
-                The requester has the job of creating stuff
-                Description for what a requester is and what it does
-                The requester has the job of creating stuff
-            </p>
+            <div class="description">
+                <p>The requester is responsible of creating and promoting work campaigns.</p>
+                <p> After campaign creation, the requester defines:</p>
+                <ul>
+                    <li>the tasks to be done</li>
+                    <li>the n. of workers involved in each task</li>
+                    <li>the threshold to consider valid a task result</li>
+                </ul>
+            </div>
         </section>
     </section>
 
