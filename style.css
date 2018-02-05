@@ -1,31 +1,50 @@
+@font-face {
+    font-family: gobold;
+    src: url(fonts/gobold_extra1.otf);
+}
 
 body {
     margin: 0px;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ccc;
+    font-family: Roboto;
     height: 100%;
-
+    background-image: url(img/pexels.jpg);
+    background-size: cover;
 }
 
 header {
     color:white;
-    text-shadow: 1px 1px 2px black;
     text-align: center;
-    background-color: #555;
-    background-image: url(img/black_keyboard.jpg);
-    background-size: cover;
-    height: 300px;
+    height: 100px;
     padding: 30px;
+    text-shadow: 1px 1px 1px black;
+
+    font-family: 'Roboto';
+
 }
 
+header #crowd_title {
+    color: rgb(155, 61, 116);
+    letter-spacing: 1px;
+}
+
+header #sourcing_title {
+    color: rgb(255, 255, 255);
+    /* letter-spacing: 2px; */
+}
+
+
 header h1 {
+    text-shadow: 1px 1px 2px black;
+
+    font-size: 50px;
     margin: 0px;
+    font-family: gobold;
 }
 
 header .subtitle {
     margin: 0px auto;
-    color: rgb(174, 137, 209);
+    margin-bottom: 10px;
 }
 
 /* Not really responsive tho..reduce viewport width to see */
@@ -33,7 +52,7 @@ header .subtitle {
     width: 70%;
     height: 300px;
     margin: auto;
-    margin-top: -60px;
+    /* margin-top: 60px; */
     padding: 0px;
     /* background-color: green; */
 }
@@ -47,8 +66,8 @@ header .subtitle {
   margin-right: 20px;
   padding-top: 10px;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 10px 6px -6px black;
+  border-radius: 2px;
+  box-shadow: 0px 10px 6px -6px #222;
 
   /* border: 1px solid; */
 }
@@ -72,11 +91,11 @@ header .subtitle {
 }
 
 #worker button {
-    background-color: #4CAF50;
+    background-color: rgb(134, 11, 83);
 }
 
 #requester button {
-    background-color: rgb(175, 76, 150);
+    background-color: rgb(214, 121, 0);
 }
 
 a.needtologin {
@@ -106,15 +125,8 @@ a.needtologin {
 
 footer {
     font-size: 13px;
-    color: white ;
-    background-color: #555;
-    border-top: 1px solid;
-    border-color: #777;
-
+    color: white;
     padding: 10px;
-    /* margin-left: 10px;
-    margin-right: 10px; */
-    /* z-index: -1; */
     position: absolute;
     right: 0;
     bottom: 0;

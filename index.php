@@ -7,10 +7,9 @@
 </head>
 <body>
     <header>
-        <h1> CROWDSOURCING </h1>
-        <p class='subtitle'>An unoriginal name for my db project app.<p>
-            Welcome to the crowdsourcing university project for the Database Course</p>
-        <p>Universitá Statale di Milano.</p>
+    <p class='subtitle'>Welcome to the crowdsourcing university project for the 2018 Database Course</p>
+        <h1> <span id='crowd_title'>CROWD</span><span id='sourcing_title'>SOURCING</span> </h1>
+        <!-- <p class='subtitle'>An <i>original</i> name for my db project web-app. -->
     </header>
 
     <section class="join_container" >
