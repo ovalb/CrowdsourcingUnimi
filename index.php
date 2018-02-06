@@ -15,7 +15,7 @@
     <section class="join_container" >
         <section id="worker" class="single_join_block"> 
             <button> Join as a worker </button>
-            <a href="#" class="needtologin"> Already have an account? Sign in </a>
+            <a href="#" class="needtologin-w"> Already have an account? Sign in </a>
             <div class="description">
                 <p>
                 Workers are users who perform tasks.
@@ -27,7 +27,7 @@
         </section><section id="requester" class="single_join_block">
             <button> Join as a requester </button>
 
-            <a href="#" class="needtologin"> Already have an account? Sign in </a>
+            <a href="#" class="needtologin-r"> Already have an account? Sign in </a>
             <div class="description">
                 <p>The requester is responsible of creating and promoting work campaigns.</p>
                 <p> After campaign creation, the requester defines:</p>

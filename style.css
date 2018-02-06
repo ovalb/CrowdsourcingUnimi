@@ -76,7 +76,7 @@ header .subtitle {
   min-height: 350px;
   margin-left: 20px;
   margin-right: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 10px 6px -6px #222;
@@ -101,17 +101,37 @@ header .subtitle {
     background-color: var(--dark-red);
 }
 
+#worker button:hover {
+    color: #ddd;
+    background-color: #470423;
+}
+
 #requester button {
     background-color: var(--accent-orange);
 }
 
-a.needtologin {
+#requester button:hover {
+    color: #ddd;
+    background-color: #ca4f15;
+}
+
+a.needtologin-w, a.needtologin-r {
     display: block;
     font-size: 13px;
     color: #888;
     text-decoration: none;
     width: fit-content;
     margin: auto;
+}
+
+a.needtologin-w:hover {
+    color: var(--dark-red);
+    /* font-weight: bold; */
+}
+
+a.needtologin-r:hover {
+    color: var(--accent-orange);
+    /* font-weight: bold; */
 }
 
 .description p {
@@ -127,7 +147,6 @@ a.needtologin {
     padding-top: 2px;
 
     margin: 0px 16px;
-
 }
 
 footer {
@@ -140,5 +159,4 @@ footer {
     right: 0;
     bottom: 0;
     left: 0;
-    
 }
