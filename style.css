@@ -8,14 +8,20 @@
     --accent-orange: rgb(214, 121, 0);
 }
 
-body {
+html, body {
     height: 100%;
+    width: 100%;
     margin: 0px;
+    padding: 0px;
+}
+
+body {
     font-size: 16px;
     font-family: sans-serif;
     background-image: url(img/pexels.jpg);
     background-color: #777;
     background-repeat: no-repeat;
+    background-position: 50% 50%;
     background-size: cover;
 }
 
