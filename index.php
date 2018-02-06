@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css" >
     <title>Crowdsourcing</title>
 </head>
@@ -9,7 +10,6 @@
     <header>
     <p class='subtitle'>Welcome to the crowdsourcing university project for the 2018 Database Course</p>
         <h1> <span id='crowd_title'>CROWD</span><span id='sourcing_title'>SOURCING</span> </h1>
-        <!-- <p class='subtitle'>An <i>original</i> name for my db project web-app. -->
     </header>
 
     <section class="join_container" >
