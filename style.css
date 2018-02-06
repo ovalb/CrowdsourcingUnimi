@@ -3,24 +3,29 @@
     src: url(fonts/gobold_extra1.otf);
 }
 
+:root {
+    --dark-red: rgb(134, 11, 83);
+    --accent-orange: rgb(214, 121, 0);
+}
+
 body {
+    height: 100%;
     margin: 0px;
     font-size: 16px;
-    font-family: Roboto;
-    height: 100%;
+    font-family: sans-serif;
     background-image: url(img/pexels.jpg);
+    background-color: #777;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
 header {
     color:white;
     text-align: center;
-    height: 100px;
     padding: 30px;
     text-shadow: 1px 1px 1px black;
 
-    font-family: 'Roboto';
-
+    font-family: 'Roboto', sans-serif;
 }
 
 header #crowd_title {
@@ -32,7 +37,6 @@ header #sourcing_title {
     color: rgb(255, 255, 255);
     /* letter-spacing: 2px; */
 }
-
 
 header h1 {
     text-shadow: 1px 1px 2px black;
@@ -49,32 +53,28 @@ header .subtitle {
 
 /* Not really responsive tho..reduce viewport width to see */
 .join_container {
-    width: 70%;
-    height: 300px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* height: 300px; */
     margin: auto;
-    /* margin-top: 60px; */
     padding: 0px;
     /* background-color: green; */
 }
 
 .single_join_block {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   width: 45%;
   height: 100%;
+  min-height: 350px;
   margin-left: 20px;
   margin-right: 20px;
   padding-top: 10px;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 10px 6px -6px #222;
-
   /* border: 1px solid; */
-}
-
-.single_join_block#requester {
-    /* margin-right: 16px; */
-    float: right;
 }
 
 .single_join_block button {
@@ -87,15 +87,16 @@ header .subtitle {
     font-size: 18px;
     border-radius: 0px;
     width: 200px;
+    min-height: 80px;
     margin: auto;
 }
 
 #worker button {
-    background-color: rgb(134, 11, 83);
+    background-color: var(--dark-red);
 }
 
 #requester button {
-    background-color: rgb(214, 121, 0);
+    background-color: var(--accent-orange);
 }
 
 a.needtologin {
@@ -127,9 +128,11 @@ footer {
     font-size: 13px;
     color: white;
     padding: 10px;
-    position: absolute;
+    text-align: end;
+
+    position: absolute; 
     right: 0;
     bottom: 0;
     left: 0;
-    text-align: end;
+    
 }
