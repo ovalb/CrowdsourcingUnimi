@@ -8,18 +8,19 @@
     --accent-orange: rgb(214, 121, 0);
 }
 
-html, body {
+html {
+    height: 100%;
+}
+
+body {
     height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
-}
-
-body {
     font-size: 16px;
     font-family: sans-serif;
     background-image: url(img/pexels.jpg);
-    background-color: #777;
+    /* background-color: green; */
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
@@ -57,21 +58,20 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* Not really responsive tho..reduce viewport width to see */
 .join_container {
     width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* height: 300px; */
     margin: auto;
     padding: 0px;
-    /* background-color: green; */
+    min-height: 75%;
 }
 
 .single_join_block {
   display: block;
   width: 45%;
+  min-width: 400px;
   height: 100%;
   min-height: 350px;
   margin-left: 20px;
@@ -80,7 +80,6 @@ header .subtitle {
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 10px 6px -6px #222;
-  /* border: 1px solid; */
 }
 
 .single_join_block button {
@@ -152,11 +151,55 @@ a.needtologin-r:hover {
 footer {
     font-size: 13px;
     color: white;
-    padding: 10px;
+    /* background-color: #470423; */
+    padding: 10px 0px;
     text-align: end;
+    width: 97%;
 
-    position: absolute; 
-    right: 0;
+    position: relative;
     bottom: 0;
-    left: 0;
+    height: 15px;
+    /* margin-top: -10px; */
 }
+/* Small devices (phones, 350px and down) */
+@media (max-width: 450px) {
+    html {
+        height: auto;
+    }
+    .join_container {
+        width: 90%;
+        flex-direction: column;
+        /* background-color: #470423; */
+    }
+
+    .single_join_block {
+        display: block;
+        width: auto;
+    
+        height: 100%;
+        min-height: 350px;
+        margin: 15px 0px;
+      }
+}
+
+/* Medium devices (tablets, 650px and down) */
+@media (max-width: 650px) {
+    html {
+        height: auto;
+    }
+    .join_container {
+        width: 90%;
+        flex-direction: column;
+        /* background-color: #470423; */
+    }
+
+    .single_join_block {
+        display: block;
+        width: auto;
+        min-width: 400px;
+        height: 100%;
+        min-height: 350px;
+        margin: 15px 0px;
+      }
+    
+ }
