@@ -14,7 +14,7 @@
 
     <section class="join_container" >
         <section id="worker" class="single_join_block"> 
-            <button> Join as a worker </button>
+            <a href="#" class='button'> Join as a worker </a>
             <a href="#" class="needtologin-w"> Already have an account? Sign in </a>
             <div class="description">
                 <p>
@@ -25,7 +25,7 @@
                  </p>
             </div>
         </section><section id="requester" class="single_join_block">
-            <button> Join as a requester </button>
+            <a class='button' href='requester-reg.php'> Join as a requester </a>
 
             <a href="#" class="needtologin-r"> Already have an account? Sign in </a>
             <div class="description">
@@ -41,6 +41,5 @@
     </section>
 
     <footer> Made by Giorgio Valbonesi </footer>
-
 </body>
 </html>

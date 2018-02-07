@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #aaa;
+}
+
+.container {
+    min-height: 90%;
+    width: 40%;
+    margin: 0px auto;
+    padding: 5px 0px;
+    /* border: solid 1px black; */
+    background-color: #eee;
+
+}
+
+header {
+    background-color: rgb(167, 9, 30);
+    padding: 10px 0px;
+
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: white;
+    
+}
+
+.request {
+    background-color:rgb(236, 114, 0);
+    width: 27%;
+    margin: 15px auto;
+    padding: 7px 0px;
+    text-align: center;
+    border: solid 2px rgb(168, 53, 0);
+    border-radius: 50px;
+}
+
+.request img {
+    width: 30px;
+    height: 30px;
+
+    position: relative;
+    top: 5px;
+}
+
+.request span {
+    color: #fff;
+    font-size: 16px;
+}
+
+.form_container {
+    width: 65%;
+    margin: 0px auto;
+    /* text-align: center; */
+}
+
+.form input {
+    width: 100%;
+    min-width: 200px;
+}
+
+.reg_button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    border-radius: 0px;
+    width: 300px;
+    min-height: 80px;
+    margin: auto;
+    background-color: blueviolet;
+}
+
+/*Filter styles*/
+.invert { filter: invert(100%); }

@@ -82,34 +82,35 @@ header .subtitle {
   box-shadow: 0px 10px 6px -6px #222;
 }
 
-.single_join_block button {
+.button {
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
     display: block;
+    vertical-align: middle;
+    text-decoration: none;
     font-size: 18px;
     border-radius: 0px;
     width: 200px;
-    min-height: 80px;
+    min-height: 30px;
     margin: auto;
 }
 
-#worker button {
+#worker a.button {
     background-color: var(--dark-red);
 }
 
-#worker button:hover {
+#worker .button:hover {
     color: #ddd;
     background-color: #470423;
 }
 
-#requester button {
+#requester a.button {
     background-color: var(--accent-orange);
 }
 
-#requester button:hover {
+#requester .button:hover {
     color: #ddd;
     background-color: #ca4f15;
 }
