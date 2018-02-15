@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css" >
+    <link rel="stylesheet" href="css/index.css" type="text/css" >
     <title>Crowdsourcing</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                  </p>
             </div>
         </section><section id="requester" class="single_join_block">
-            <a class='button' href='requester-reg.php'> Join as a requester </a>
+            <a class='button' href='r-registration.php'> Join as a requester </a>
 
             <a href="#" class="needtologin-r"> Already have an account? Sign in </a>
             <div class="description">
