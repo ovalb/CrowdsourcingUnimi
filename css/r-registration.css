@@ -23,12 +23,6 @@ a {
 
 }
 
-.input-error {
-    color: red;
-    font-size: 13px;
-    display: none;
-}
-
 .permission-section {
     background-color:rgb(250, 190, 60);
     margin: 15px auto;
@@ -38,45 +32,16 @@ a {
     /* border-radius: 50px; */
 }
 
-.permission-section img {
-    width: 30px;
-    height: 30px;
-
-    position: relative;
-    top: 5px;
-}
-
 .permission-section p {
     display: inline;
     color:rgb(190, 130, 0);
     font-size: 14px;
 }
 
-.permission-section button {
-    margin-top: 6px;
-    font-size: 14px;
-    color:rgb(250, 190, 60);
-    background-color: rgb(190, 130, 0);
-    border: solid 1px rgb(190, 130, 0);
-    border-radius: 30px;
-    font-weight: bold;
-}
-
-/* .permission-section button: {
-    margin-top: 6px;
-    font-size: 14px;
-    color:rgb(250, 190, 60);
-    background-color: rgb(190, 130, 0);
-    border: solid 1px rgb(190, 130, 0);
-    border-radius: 30px;
-    font-weight: bold;
-} */
-
 .form_container {
     width: 65%;
     margin: 0px auto;
     margin-bottom: 30px;
-    /* text-align: center; */
 }
 
 .form input {
