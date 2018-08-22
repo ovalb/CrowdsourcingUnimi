@@ -39,7 +39,7 @@
     if ($query_result && $arr) {
         pg_query($db_conn, "INSERT INTO requester (user_id) VALUES ($arr[0]);");
         pg_query($db_conn, "COMMIT;");
-        redirect("requester-form.php?result=success");
+        redirect("registration-success.php");
     } else {
         pg_query($db_conn, "ROLLBACK;");
         redirect("requester-form.php?result=transaction_err");
