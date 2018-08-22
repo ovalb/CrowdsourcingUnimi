@@ -22,8 +22,10 @@
 
             <p id="error_msg"> 
                 <?php
-                    if(isset($_GET['result']) && $_GET['result'] == 'emptyfield_err')
-                        echo "One or more fields are empty";
+                    include 'error-msgs.php';
+
+                    if(isset($_GET['result']) && $_GET['result'] != 'success')
+                        echo $registration_error[$_GET['result']];
                 ?>
             </p>
             <form name='reg_form' class="form" method="post" action="req-register.php">

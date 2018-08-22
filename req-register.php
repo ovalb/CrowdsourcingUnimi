@@ -14,7 +14,7 @@
 
     if (empty($username) || empty($email) || 
         empty($password) || empty($repeated_psw)) {
-            redirect("requester-form.php?result=emptyfield_err");
+            redirect("requester-form.php?result=empty_field_err");
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         redirect("requester-form.php?result=invalid_email_err");
