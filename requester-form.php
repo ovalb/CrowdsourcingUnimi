@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css" type="text/css" >
-    <link rel="stylesheet" href="css/r-registration.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/requester-form.css" type="text/css">
     <title>Crowdsourcing</title>
 </head>
 
@@ -20,13 +20,13 @@
         </div>
         <div class="form_container">
 
-            <p> 
+            <p id="error_msg"> 
                 <?php
-                    if(isset($_GET['empty_field']))
-                        echo "FIELDS ARE EMPTTYYYYY";
+                    if(isset($_GET['result']) && $_GET['result'] == 'emptyfield_err')
+                        echo "One or more fields are empty";
                 ?>
             </p>
-            <form name='reg_form' class="form" method="post" action="req-register.php" onsubmit="return validateForm()">
+            <form name='reg_form' class="form" method="post" action="req-register.php">
                 <label for='user-field'>Username</label>
                 <input id='user-field' class='textfield' type="text" name="username">
 

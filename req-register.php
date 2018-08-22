@@ -5,7 +5,7 @@
     }
     
     if (!isset($_POST['register']))
-        redirect("req-reg-form.php");
+        redirect("requester-form.php");
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -14,34 +14,34 @@
 
     if (empty($username) || empty($email) || 
         empty($password) || empty($repeated_psw)) {
-            redirect("req-reg-form.php?result=emptyfield_err");
+            redirect("requester-form.php?result=emptyfield_err");
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        redirect("req-reg-form.php?result=invalid_email_err");
+        redirect("requester-form.php?result=invalid_email_err");
     }
 
     if ($password !== $repeated_psw) {
-        redirect("req-reg-form.php?result=mismatch_psw_err");
+        redirect("requester-form.php?result=mismatch_psw_err");
     }
 
     $password = password_hash($password, PASSWORD_DEFAULT);
     
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
-                    or redirect("req-reg-form.php?result=connect_err");
+                    or redirect("requester-form.php?result=connect_err");
 
     //Use a transaction to insert requester in db
-    pg_query($db_conn, "BEGIN;") or redirect("req-reg-form.php?result=transaction_err");
+    pg_query($db_conn, "BEGIN;") or redirect("requester-form.php?result=transaction_err");
 
     $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password') RETURNING (id);";
-    $query_result = pg_query($db_conn, $query) or redirect("req-reg-form.php?result=insert_err");
+    $query_result = pg_query($db_conn, $query) or redirect("requester-form.php?result=insert_err");
     $arr = pg_fetch_array($query_result);
 
     if ($query_result && $arr) {
         pg_query($db_conn, "INSERT INTO requester (user_id) VALUES ($arr[0]);");
         pg_query($db_conn, "COMMIT;");
-        redirect("req-reg-form.php?result=success");
+        redirect("requester-form.php?result=success");
     } else {
         pg_query($db_conn, "ROLLBACK;");
-        redirect("req-reg-form.php?result=transaction_err");
+        redirect("requester-form.php?result=transaction_err");
     }
 ?>

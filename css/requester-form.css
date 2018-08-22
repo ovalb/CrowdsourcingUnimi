@@ -44,6 +44,11 @@ a {
     margin-bottom: 30px;
 }
 
+#error_msg {
+    color: #ff0000;
+    /* font-size: 30px; */
+}
+
 .form input {
     width: 100%;
     /* min-width: 150px; */

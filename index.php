@@ -25,7 +25,7 @@
                  </p>
             </div>
         </section><section id="requester" class="single_join_block">
-            <a class='button' href='req-reg-form.php'> Join as a requester </a>
+            <a class='button' href='requester-form.php'> Join as a requester </a>
 
             <a href="#" class="needtologin-r"> Already have an account? Sign in </a>
             <div class="description">
