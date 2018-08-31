@@ -1,8 +1,5 @@
 <?php
-    function redirect($location) {
-        header("Location:$location");
-        exit;
-    }
+    include 'utility.php';
     
     if (!isset($_POST['register']))
         redirect("requester-form.php");

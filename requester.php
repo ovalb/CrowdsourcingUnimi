@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +12,10 @@
 </head>
 <body>
     <header> 
-    <span>You are logged in as
-        <?php echo "Pluto" ?>    
+    <span>
+        <?php 
+        echo ("You are logged in as " . $_SESSION['username']);
+        ?>    
     </span>
         </header>
     <div class="container"> 

@@ -27,7 +27,7 @@
         </section><section id="requester" class="single_join_block">
             <a class='button' href='requester-form.php'> Join as a requester </a>
 
-            <a href="#" class="needtologin-r"> Already have an account? Sign in </a>
+            <a href="requester-login.php" class="needtologin-r"> Already have an account? Sign in </a>
             <div class="description">
                 <p>The requester is responsible of creating and promoting work campaigns.</p>
                 <p> After campaign creation, the requester defines:</p>
