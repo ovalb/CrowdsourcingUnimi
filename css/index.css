@@ -68,7 +68,7 @@ header .subtitle {
     min-height: 75%;
 }
 
-.single_join_block {
+/* .single_join_block {
   display: block;
   width: 45%;
   min-width: 400px;
@@ -80,7 +80,7 @@ header .subtitle {
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 10px 6px -6px #222;
-}
+} */
 
 .button {
     border: none;
