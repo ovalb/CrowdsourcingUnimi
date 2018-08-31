@@ -14,7 +14,7 @@
     <header> 
     <span>
         <?php 
-        echo ("You are logged in as " . $_SESSION['username']);
+        echo ("REQUESTER: You are logged in as " . $_SESSION['username']);
         ?>    
     </span>
         </header>
