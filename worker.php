@@ -14,19 +14,17 @@
     <header> 
     <span>
         <?php 
-        echo ("REQUESTER: You are logged in as " . $_SESSION['username']);
+        echo ("WORKER: You are logged in as " . $_SESSION['username']);
         ?>    
     </span>
         </header>
     <div class="container"> 
         <?php
-            echo "<p>No campaign has been created </p>" 
+            echo "<p>I CAN'T SEE NO CAMPAIGN BRUV</p>" 
         ?>
     </div>
-    <form action="create_campaign.php">
-        <input type='button'> Create campaign</input>
-    </form>
 
     <a href="logout.php">Logout </a>
+    </form>
 </body>
 </html>
