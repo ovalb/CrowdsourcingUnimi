@@ -1,5 +1,5 @@
 <?php
-    include 'utility.php';
+    include '../utility/redirect.php';
 
     if (!isset($_POST['login'])) {
         redirect("login-form.php");
@@ -15,8 +15,6 @@
         or redirect("login-form.php?result=connect_err");
     
     $table = $_POST['kind']; //either worker or requester
-    // echo $table;
-    // die;
 
     $query = "SELECT password FROM $table WHERE username = '$username';";
 
@@ -31,7 +29,7 @@
     if ($correct_psw) {
         session_start();
         $_SESSION['username'] = $username;
-        redirect("{$table}.php");
+        redirect("../{$table}.php");
     } else {
         redirect("login-form.php?result=invalid_login");
     }

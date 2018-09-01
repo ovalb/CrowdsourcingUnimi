@@ -1,5 +1,5 @@
 <?php
-    include 'utility.php';
+    include '../utility/redirect.php';
     
     if (!isset($_POST['register']))
         redirect("registration-form.php");

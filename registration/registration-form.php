@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css" type="text/css">
-    <link rel="stylesheet" href="css/registration-form.css" type="text/css">
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+    <link rel="stylesheet" href="../css/registration-form.css" type="text/css">
     <title>Crowdsourcing</title>
 </head>
 
@@ -18,7 +18,7 @@
 
             <p id="error_msg"> 
                 <?php
-                    include 'error-msgs.php';
+                    include '../utility/error-msgs.php';
 
                     if(isset($_GET['result']) && $_GET['result'] != 'success')
                         echo $registration_error[$_GET['result']];

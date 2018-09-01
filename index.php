@@ -13,8 +13,8 @@
     </header>
 
     <section class="join_container" >
-        <a href="registration-form.php" class='button'> Register now </a>
-        <a href="login-form.php" class='button'> LOGIN </a>
+        <a href="registration/registration-form.php" class='button'> Register now </a>
+        <a href="login/login-form.php" class='button'> LOGIN </a>
 
     </section>
 

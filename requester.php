@@ -23,10 +23,8 @@
             echo "<p>No campaign has been created </p>" 
         ?>
     </div>
-    <form action="create_campaign.php">
-        <input type='button'> Create campaign</input>
-    </form>
 
-    <a href="logout.php">Logout </a>
+    <a href="/create_campaign.php">Create campaign </a>
+    <a href="login/logout.php">Logout </a>
 </body>
 </html>

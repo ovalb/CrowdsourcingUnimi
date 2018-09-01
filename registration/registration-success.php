@@ -7,6 +7,6 @@
 </head>
 <body>
     <p>Registration is successful.</p>
-    <a href="index.php"> Continue </a>
+    <a href="../index.php"> Continue </a>
 </body>
 </html>
