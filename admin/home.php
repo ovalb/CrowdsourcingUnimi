@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    include '../utility/redirect.php';
+    
+    if (!isset($_SESSION['username']))
+        redirect("../index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

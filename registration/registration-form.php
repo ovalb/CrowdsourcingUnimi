@@ -26,16 +26,16 @@
             </p>
             <form name='reg_form' class="form" method="post" action="registration-process.php">
                 <label for='user-field'>Username</label>
-                <input id='user-field' class='textfield' type="text" name="username">
+                <input id='user-field' class='textfield' type="text" name="username" required>
 
                 <label for='email-field'>Email</label>
-                <input id='email-field' class='textfield' type='text' name='email'>
+                <input id='email-field' class='textfield' type='text' name='email' required>
                 
                 <label for='psw-field'>Password</label>
-                <input id='psw-field' class='textfield' type="password" name='password' >
+                <input id='psw-field' class='textfield' type="password" name='password' required>
                 
                 <label for='repeat-psw-field'>Repeat Password</label>
-                <input id='repeat-psw-field' class='textfield' type="password" name='repeated-psw' >
+                <input id='repeat-psw-field' class='textfield' type="password" name='repeated-psw' required>
                 
                 <input id='worker' type='radio' name='kind' value='worker' checked>
                 <label for="worker">Worker</label>

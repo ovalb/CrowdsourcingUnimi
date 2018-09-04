@@ -27,7 +27,7 @@
                     or redirect("registration-form.php?result=connect_err");
 
     $table = $_POST['kind']; //either worker or requester
-    $query = "INSERT INTO $table (username, email, password) VALUES ('$username', '$email', '$password') RETURNING (id);";
+    $query = "INSERT INTO $table (username, email, password) VALUES ('$username', '$email', '$password');";
     $query_result = pg_query($db_conn, $query) or redirect("registration-form.php?result=insert_err");
 
     redirect("registration-success.php");

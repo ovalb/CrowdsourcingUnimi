@@ -16,18 +16,18 @@
     
     $table = $_POST['kind']; //either worker or requester
 
-    $query = "SELECT password FROM $table WHERE username = '$username';";
+    $result = pg_query($db_conn, "SELECT id, password FROM $table WHERE username = '$username';") 
+        or redirect("login-form.php?result=db_err");
+    
+        $returned_id = pg_fetch_result($result, 0);
+        $returned_psw = pg_fetch_result($result, 1);
 
-    $result = pg_query($db_conn, $query) or redirect("login-form.php?result=db_err");
-    $arr = pg_fetch_row($result);
-
-    if (empty($arr[0]))
+    if (empty($returned_psw))
         redirect("login-form.php?result=invalid_login");
 
-    $correct_psw = password_verify($password, $arr[0]);
-
-    if ($correct_psw) {
+    if (password_verify($password, $returned_psw)) {
         session_start();
+        $_SESSION['id'] = $returned_id;
         $_SESSION['username'] = $username;
         redirect("../{$table}.php");
     } else {
