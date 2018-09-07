@@ -14,9 +14,6 @@
     $threshold = $_POST['threshold'];
     $worker_no = $_POST['worker_no'];
 
-    // echo "$name <br>$r_id <br> $reg_period <br> $open_date <br> $close_date <br> $threshold <br> $worker_no";
-    // die;
-
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
         or redirect("index.php");
 

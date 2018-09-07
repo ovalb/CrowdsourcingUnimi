@@ -15,13 +15,9 @@
     $title = $_POST['title'];
     $desc = $_POST['desc'];
     $options = $_POST['options'];
-    // $keywords = $_POST['keywords'];
-
-    // echo $options;
-    // echo $keywords;
+    $keywordArray = $_POST['keywords'];
 
     $optionsArray = explode(",", $options);
-    // $keywordArray = explode(",", $keywords);
 
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
     or redirect("index.php");
@@ -34,6 +30,10 @@
 
     foreach($optionsArray as $opt) {
         pg_query("INSERT INTO task_option (name, task) VALUES ('$opt', $task_id);");
+    }
+
+    foreach($keywordArray as $kw) {
+        pg_query("INSERT INTO task_keyword (task, keyword) VALUES ('$task_id', $kw);");
     }
 
     pg_query("COMMIT;");
