@@ -18,8 +18,6 @@
     <link rel='stylesheet' href='../node_modules/chosen-js/chosen.css' />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
-
-    <script src="add-keyword.js"></script>
 </head>
 <body>
     <b>Create Tasks</b> <br>
@@ -41,7 +39,7 @@
         <br>
         <label for='keywords'> Keywords: </label>
 
-        <select name='keywords[]' form='task-form' class="chosen-select" data-placeholder="Choose keywords..." multiple >
+        <select name='keywords[]' width="120px" form='task-form' class="chosen-select" data-placeholder="Choose keywords..." multiple >
             <?php
                 $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval"); 
                 $result = pg_query($db_conn, "SELECT id, name FROM keyword;");

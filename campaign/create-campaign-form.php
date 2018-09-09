@@ -24,7 +24,7 @@
         <label for='reg_period_date'> Can register until: </label>
         <input type="date" name="reg_period_date" id='reg_period_date' required>
 
-        <input type="time" name="reg_period_time" id='reg_period_time'>
+        <!-- <input type="time" name="reg_period_time" id='reg_period_time'> -->
 
         <br>
 
