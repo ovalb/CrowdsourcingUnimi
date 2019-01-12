@@ -1,3 +1,2 @@
-drop schema public cascade;
-create schema public;
-\i Create_Database.pgsql
+\i DropAll.pgsql
+\i InitDb.pgsql

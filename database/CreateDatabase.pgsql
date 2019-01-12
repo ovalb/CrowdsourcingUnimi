@@ -101,11 +101,3 @@ CREATE TABLE worker_keyword (
     level integer NOT NULL,
     PRIMARY KEY (worker, keyword)
 );
-
--- CREATE EXTENSION pgcrypto;
--- INSERT INTO user (username, password) values ('boss', crypt('boss', gen_salt('bf')));
--- INTO INTO admin(id, user_id) values (1, 1);
-
-
--- CREATE FUNCTION createAdmin() RETURNS NULL
---     BEGIN 
