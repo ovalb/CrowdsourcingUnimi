@@ -2,22 +2,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css" type="text/css" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="sticky-footer.css" rel="stylesheet">
+    <link href="css/vertical-align.css" rel="stylesheet">
+
     <title>Crowdsourcing</title>
 </head>
-<body>
-    <header>
-    <p class='subtitle'>Welcome to the crowdsourcing university project for the 2018 Database Course</p>
-        <h1> <span id='crowd_title'>CROWD</span><span id='sourcing_title'>SOURCING</span> </h1>
-    </header>
+<body class='text-center'>
+    <main class='container'>
+        <h1 class='vertical'> JOIN US </h1>
+        <h6>Welcome to the crowdsourcing university project for the 2018 Database Course</h6>
+        <a href="registration/registration-form.php" class='btn btn-primary btn-lg'> Register now </a>
+        <a href="login/login-form.php" class='btn btn-secondary btn-lg'> Login </a>
+    </main>
 
-    <section class="join_container" >
-        <a href="registration/registration-form.php" class='button'> Register now </a>
-        <a href="login/login-form.php" class='button'> LOGIN </a>
-
-    </section>
-
-    <footer> Made by Giorgio Valbonesi </footer>
+    <footer class="footer text-right pr-4">
+        <span class="text-muted ">Made by Giorgio Valbonesi</span>
+    </footer>
 </body>
 </html>

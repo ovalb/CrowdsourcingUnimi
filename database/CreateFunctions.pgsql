@@ -2,7 +2,7 @@ CREATE FUNCTION insert_user (name users.username%TYPE, psw users.password%TYPE, 
     RETURNS boolean as $$
     DECLARE inserted_id integer;
     BEGIN
-        INSERT INTO users(username, password) VALUES (name, crypt(psw, gen_salt('bf'))) 
+        INSERT INTO users(username, password) VALUES (name, crypto.crypt(psw, crypto.gen_salt('bf'))) 
         RETURNING id INTO inserted_id;
 
         IF FOUND THEN

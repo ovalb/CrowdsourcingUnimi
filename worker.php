@@ -31,12 +31,16 @@
         <?php
             echo "<b>AVAILABLE CAMPAIGNS TO ENROLL TO:</b><br>";
             $currentDate = date("Y-m-d");
-            $res = pg_query("SELECT id, name, reg_period, open_date, close_date FROM campaign WHERE reg_period > '$currentDate' 
+            $res = pg_query("SELECT id, name, reg_period, open_date, close_date 
+                            FROM campaign 
+                            WHERE reg_period > '$currentDate' 
                         EXCEPT
-                        SELECT id, name, reg_period, open_date, close_date FROM campaign c JOIN worker_campaign wc 
-                        ON wc.worker = '$id' and wc.campaign = c.id");
+                            SELECT id, name, reg_period, open_date, close_date 
+                            FROM campaign c JOIN worker_campaign wc 
+                            ON wc.worker = '$id' and wc.campaign = c.id");
 
             echo "<form action='enroll-process.php' method='POST'>";
+
                 $index = 0;
                 while ($arr = pg_fetch_array($res)) {
                     echo "<$index -> $arr[1] ( $arr[2] | $arr[3] to $arr[4])";
@@ -46,11 +50,11 @@
             echo "</form>";
 
             echo "<br><b> CAMPAIGNS ENROLLED TO:</b><br>";
-            $res = pg_query("SELECT * FROM campaign c JOIN worker_campaign wc 
+            $res = pg_query("SELECT id, name, open_date, close_date FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id");
 
             while ($arr = pg_fetch_array($res)) {
-                echo ">> ( $arr[1] | $arr[4] to $arr[5]) <br>";
+                echo ">> ( $arr[1] | $arr[2] to $arr[3]) <br>";
             }
         ?>
     </div>

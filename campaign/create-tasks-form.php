@@ -39,7 +39,7 @@
         <br>
         <label for='keywords'> Keywords: </label>
 
-        <select name='keywords[]' width="120px" form='task-form' class="chosen-select" data-placeholder="Choose keywords..." multiple >
+        <select name='keywords[]' form='task-form' class="chosen-select" data-placeholder="Choose keywords..." multiple >
             <?php
                 $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval"); 
                 $result = pg_query($db_conn, "SELECT id, name FROM keyword;");

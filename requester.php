@@ -29,11 +29,13 @@
         </header>
     <div> 
         <?php
-            //if this user doenn't have permission show that he can't do stuff
+            //if this user doesn't have permission show that he can't do stuff
             $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
                 or redirect("index.php");
             
-            $result = pg_query("SELECT has_permission FROM requester WHERE username='$req_username'");
+            $result = pg_query("SELECT has_permission 
+                        FROM requester_view
+                        WHERE id= $req_id");
 
             $req_permission = pg_fetch_result($result, 0);
 
@@ -41,7 +43,9 @@
                 echo "You don't have permission to create any campaign yet. Wait for admin.";
                 exit;
             }
-            $campaigns = pg_query("SELECT * FROM campaign WHERE requester = $req_id");
+            $campaigns = pg_query("SELECT * 
+                                FROM campaign
+                                WHERE requester = $req_id");
 
             if (pg_num_rows($campaigns) == 0)
                 echo "No campaigns have been created. Press the button below.";
