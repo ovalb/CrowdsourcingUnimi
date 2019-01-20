@@ -4,6 +4,16 @@
     font-size: 20px;
 }
 
+.remove_keyword {
+    border-radius: 50%;
+    padding: 0px 10px;
+    font-size: 20px;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
 .fieldset {
     position:relative;
 }
@@ -11,4 +21,14 @@
 .form-control {
     margin: 10px 0%;
     box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    font-style: italic;
+    text-align: left;
+    margin: 5px;
 }

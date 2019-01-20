@@ -1,5 +1,5 @@
 CREATE FUNCTION insert_user (name users.username%TYPE, psw users.password%TYPE, usr_type varchar(25))
-    RETURNS boolean as $$
+    RETURNS integer as $$
     DECLARE inserted_id integer;
     BEGIN
         INSERT INTO users(username, password) VALUES (name, crypto.crypt(psw, crypto.gen_salt('bf'))) 
@@ -15,11 +15,11 @@ CREATE FUNCTION insert_user (name users.username%TYPE, psw users.password%TYPE, 
                     INSERT INTO requester(user_id) VALUES (inserted_id);
                 ELSE
                     RAISE 'Invalid user type: could be admin, worker or requester';
-                    RETURN FALSE;
+                    RETURN -1;
             END CASE;
-            RETURN TRUE;
+            RETURN inserted_id;
         ELSE
-            RETURN FALSE;
+            RETURN inserted_id;
         END IF;
     END;
 $$ LANGUAGE plpgsql;
