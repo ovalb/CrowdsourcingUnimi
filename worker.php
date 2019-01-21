@@ -33,7 +33,7 @@
             $currentDate = date("Y-m-d");
             $res = pg_query("SELECT id, name, reg_period, open_date, close_date 
                             FROM campaign 
-                            WHERE reg_period > '$currentDate' 
+                            WHERE reg_period >= '$currentDate' 
                         EXCEPT
                             SELECT id, name, reg_period, open_date, close_date 
                             FROM campaign c JOIN worker_campaign wc 
@@ -49,10 +49,13 @@
                 }
             echo "</form>";
 
+            // need to make distinction between not opened yet and open campaign (and maybe finished ones)
             echo "<br><b> CAMPAIGNS ENROLLED TO:</b><br>";
             $res = pg_query("SELECT id, name, open_date, close_date 
                         FROM campaign c JOIN worker_campaign wc 
-                        ON wc.worker = '$id' and wc.campaign = c.id");
+                        ON wc.worker = '$id' and wc.campaign = c.id
+                        WHERE c.open_date >= '$currentDate' and
+                            c.close_date <= '$currentDate'");
 
             echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>";
             echo "<table>"; 

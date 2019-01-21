@@ -6,3 +6,6 @@
 
 CREATE SCHEMA crypto; 
 CREATE EXTENSION pgcrypto WITH SCHEMA crypto;
+
+-- insert admin
+select insert_user('admin', 'password', 'admin');

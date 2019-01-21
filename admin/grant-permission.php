@@ -10,7 +10,7 @@
 
     $req_id = $_POST['grant'];
 
-    pg_query($db_conn, "UPDATE requester SET has_permission = 't' WHERE user_id = $req_id") 
+    pg_query($db_conn, "UPDATE requester SET has_permission = true WHERE id = $req_id") 
         or redirect("home.php?result=fail");
 
     redirect("home.php?result=success");

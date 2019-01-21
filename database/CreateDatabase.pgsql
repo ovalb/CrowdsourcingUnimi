@@ -16,13 +16,12 @@ CREATE TABLE admin (
 CREATE TABLE worker (
     id serial PRIMARY KEY,
     user_id integer REFERENCES users(id)
-
 );
 
 CREATE TABLE requester (
     id serial PRIMARY KEY,
     user_id integer REFERENCES users(id),
-    has_permission boolean DEFAULT 'f' NOT NULL
+    has_permission boolean DEFAULT false NOT NULL
 );
 
 CREATE TABLE campaign (
@@ -32,15 +31,16 @@ CREATE TABLE campaign (
     reg_period date NOT NULL,
     open_date date NOT NULL,
     close_date date NOT NULL,
-    task_threshold integer NOT NULL CHECK(task_threshold > 0 AND task_threshold <= 100),
-    min_worker_num integer NOT NULL CHECK(min_worker_num > 0),
+    task_threshold integer NOT NULL,
+    min_worker_num integer NOT NULL,
+    finished boolean DEFAULT FALSE NOT NULL
     UNIQUE (name, requester),
     FOREIGN KEY (requester) REFERENCES requester(id) 
 );
 
 ALTER TABLE campaign ADD CONSTRAINT date_validity_check CHECK (
-    reg_period < open_date
-    AND open_date < close_date
+    reg_period <= open_date
+    AND open_date <= close_date
 );
 
 ALTER TABLE campaign ADD CONSTRAINT positive_nums_check CHECK (

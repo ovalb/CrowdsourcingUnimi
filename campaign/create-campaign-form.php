@@ -14,9 +14,9 @@
     <title>Create Campaign Form</title>
 </head>
 <body>
-    Create campaign
+    <b>Create campaign</b>
     <form action='validate-campaign-info.php' method='POST'>
-        <label for='name'> Task name: </label>
+        <label for='name'> Campaign name: </label>
         <input type="text" name="name" id='name' required>
         
         <br>

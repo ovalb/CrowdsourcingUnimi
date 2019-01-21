@@ -31,7 +31,7 @@
             exit;
         }
 
-        $result = pg_query($db_conn, "SELECT id, username FROM requester_view WHERE has_permission = 'f'");
+        $result = pg_query($db_conn, "SELECT id, username FROM requester_view WHERE has_permission = FALSE");
         while ($row = pg_fetch_row($result)) {
             echo "Grant permission to $row[1]";
             echo "<form action='grant-permission.php' method='post'>";

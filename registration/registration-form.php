@@ -58,11 +58,6 @@
         </fieldset>
 
         <input class='btn btn-primary btn-lg register-btn' type="submit" name='register' value='Register'>
-
-        <!-- <div class='worker-nav'>
-            <button id='prev-btn' class='btn btn-secondary btn-md'> Previous </button>
-            <button id='next-btn' class='btn btn-primary btn-md'> Next </button>
-        </div> -->
         </form>
         </div>
     </div>
@@ -93,8 +88,8 @@
             $("#no_skills").hide();
             $("#added_traits").append(`<li>${traitText} : ${level} ${removeButtonCode}</li>`);
 
-            $("form").append(`<input type='hidden' name='traits[]' value='${traitValue}' />`);
-            $("form").append(`<input type='hidden' name='levels[]' value='${level}' />`);
+            $("form").append(`<input class='${traitText}' type='hidden' name='traits[]' value='${traitValue}' />`);
+            $("form").append(`<input class='${traitText}' type='hidden' name='levels[]' value='${level}' />`);
             $("#keys option:selected").attr('disabled', true);
         } 
 
@@ -111,6 +106,7 @@
             }
             
             $(`#keys option:contains(${firstWords[0]})`).removeAttr('disabled');
+            $(`input.${firstWords[0]}`).remove();
         }
 
         function requesterForm() {
