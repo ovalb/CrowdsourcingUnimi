@@ -24,6 +24,7 @@
     <span>
         <?php 
         echo ("WORKER: You are logged in as " . $username);
+        echo "<a href='worker-details.php'> View profile </a>"
         ?>    
     </span>
         </header>
@@ -43,7 +44,7 @@
 
                 $index = 0;
                 while ($arr = pg_fetch_array($res)) {
-                    echo "<$index -> $arr[1] ( $arr[2] | $arr[3] to $arr[4])";
+                    echo "$index) -> $arr[1] ( $arr[2] | $arr[3] to $arr[4])";
                     echo "<button type='submit' name='enroll' value='$arr[0]'>Enroll</button> </a><br>";
                     $index++;
                 }
