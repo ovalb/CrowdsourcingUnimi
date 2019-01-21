@@ -50,12 +50,21 @@
             echo "</form>";
 
             echo "<br><b> CAMPAIGNS ENROLLED TO:</b><br>";
-            $res = pg_query("SELECT id, name, open_date, close_date FROM campaign c JOIN worker_campaign wc 
+            $res = pg_query("SELECT id, name, open_date, close_date 
+                        FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id");
 
+            echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>";
+            echo "<table>"; 
+
             while ($arr = pg_fetch_array($res)) {
-                echo ">> ( $arr[1] | $arr[2] to $arr[3]) <br>";
+                echo "<tr>";
+                echo "<td>$arr[1]</td> <td>$arr[2]</td> <td>$arr[3]</td> <td><button name='campaign' value='{$arr[0]}'>Do tasks!</a></td>";
+                echo "</tr>";
             }
+
+            echo "</table>";
+            echo "</form>"
         ?>
     </div>
 
