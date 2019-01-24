@@ -45,10 +45,10 @@
             }
             $campaigns = pg_query("SELECT * 
                                 FROM campaign
-                                WHERE requester = $req_id");
+                                WHERE requester = $req_id and finished = false");
 
             if (pg_num_rows($campaigns) == 0)
-                echo "No campaigns have been created. Press the button below.";
+                echo "No open campaign present. Press the button below.";
             else {
                 while ($row = pg_fetch_row($campaigns)) {
                     echo "<div class='campaign'>";
@@ -57,9 +57,25 @@
                     echo "</div>";
                 }
             }
+
+            echo "<br><h3>FINISHED CAMPAIGNS </h3>";
+            $result = pg_query("SELECT id, name
+                            FROM campaign
+                            WHERE requester = $req_id and finished = true");
+
+            if (pg_num_rows($result) == 0)
+            echo "No closed campaign present.";
+            else {
+                $i = 0;
+                while ($row = pg_fetch_row($result)) {
+                    echo "<form method='post' action='campaign/campaign-report.php'>";
+                    echo "<input type='submit' name='campaign_id' value=$row[0]> $row[1]";
+                    echo "</div>";
+                }
+            }
         ?>
     </div>
-
+            <br> <br>
     <a href="campaign/create-campaign-form.php">Create campaign </a>
 </body>
 </html>

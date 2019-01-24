@@ -39,3 +39,6 @@ Il sistema assegnerá i task nel seguente ordine:
 3) task1: affinitá 3 (music)
 4) task2: affinitá 0 (nessuna competenza in comune)
 
+### TOP 10 WORKERS
+I lavoratori saranno classificati in base al loro score.
+<!-- Se due worker hanno lo stesso punteggio, verrá scelto quello con più task eseguiti complessivamente.  -->
