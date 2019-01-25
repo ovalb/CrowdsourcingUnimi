@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/requester.css" type="text/css" >
-    <title>Document</title>
+    <title>Worker</title>
 </head>
 <body>
     <header> 
@@ -50,8 +50,7 @@
                 }
             echo "</form>";
 
-            // need to make distinction between not opened yet and open campaign (and maybe finished ones)
-            echo "<br><b> CAMPAIGNS ENROLLED TO:</b><br>";
+            echo "<br><b> OPEN CAMPAIGNS:</b><br>";
             $res = pg_query("SELECT id, name, open_date, close_date 
                         FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id
@@ -68,7 +67,19 @@
             }
 
             echo "</table>";
-            echo "</form>"
+            echo "</form>";
+
+            echo "<b> FINISHED CAMPAIGNS: </b>";
+            $res = pg_query($db_conn, "SELECT id, name, close_date
+                            FROM campaign c JOIN worker_campaign wc
+                            ON wc.worker = $id AND wc.campaign = c.id
+                            WHERE c.finished = TRUE");
+
+            echo "<form action='/Crowdsourcing/worker-statistics.php' method='post'><table>";
+            while ($arr = pg_fetch_array($res)) {
+                echo "<tr>" . "<td>$arr[1]</td> <td>$arr[2]</td><td> <button name='stats' value='$arr[0]'>Show stats</button>" . "</tr>";
+            }
+            echo "</table>";
         ?>
     </div>
 
