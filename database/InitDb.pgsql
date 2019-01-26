@@ -3,6 +3,7 @@
 \i InsertUser.pgsql
 \i CreateViews.pgsql
 \i AssignTaskAffinity.pgsql
+\i AssignTaskResult.pgsql
 \i AssignScoreWorker.pgsql
 
 CREATE SCHEMA crypto; 

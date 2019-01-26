@@ -51,11 +51,11 @@
             echo "</form>";
 
             echo "<br><b> OPEN CAMPAIGNS:</b><br>";
-            $res = pg_query("SELECT id, name, open_date, close_date 
+            $res = pg_query("SELECT c.id, c.name, c.open_date, c.close_date 
                         FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id
-                        WHERE c.open_date >= '$currentDate' and
-                            c.close_date <= '$currentDate'");
+                        WHERE c.open_date <= '$currentDate' and
+                            c.close_date >= '$currentDate'");
 
             echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>";
             echo "<table>"; 
