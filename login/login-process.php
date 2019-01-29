@@ -14,7 +14,7 @@
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
         or redirect("login-form.php?result=connect_err");
     
-    $user_type = $_POST['kind']; //either worker or requester
+    $user_type = $_POST['usertype']; //either worker or requester
 
     $query = "SELECT ut.id
             FROM {$user_type}_view ut
