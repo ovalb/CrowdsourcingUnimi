@@ -8,27 +8,11 @@ html, body {
     padding-top: 40px;
 }
 
-.card {
-    min-width: 250px;
-    max-width: 250px;
-    /* background-color: ; */
-}
-
 h2 {
     margin-top: 20px;
 }
 
-.card {
-    margin: 20px;
-}
 
-.card-text {
-    margin: 0px;
-}
-
-.card-body {
-    align-content: center;
-}
 table {
     text-align: right;
     margin-bottom: 5px;

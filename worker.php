@@ -16,74 +16,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/requester.css" type="text/css" >
+    <base href="/Crowdsourcing/" >
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+    integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link rel="stylesheet" href="css/worker.css" type="text/css" >
+    <link rel="stylesheet" href="css/campaign-card.css" type="text/css" >
     <title>Worker</title>
 </head>
 <body>
     <header> 
-    <span>
-        <?php 
-        echo ("WORKER: You are logged in as " . $username);
-        echo "<a href='worker-details.php'> View profile </a>"
-        ?>    
-    </span>
-        </header>
-    <div class="container"> 
+        <?php require_once("includes/worker-header.php");?>    
+    </header>
+    <div class="container text-center">
+        
         <?php
-            echo "<b>AVAILABLE CAMPAIGNS TO ENROLL TO:</b><br>";
-            $currentDate = date("Y-m-d");
+            echo "<div class='row'>
+                  <div class='col'>
+                  <h2>Campaigns to join</h2>";
             $res = pg_query("SELECT id, name, reg_period, open_date, close_date 
                             FROM campaign 
-                            WHERE reg_period >= '$currentDate' 
+                            WHERE reg_period >= CURRENT_DATE
                         EXCEPT
                             SELECT id, name, reg_period, open_date, close_date 
                             FROM campaign c JOIN worker_campaign wc 
                             ON wc.worker = '$id' and wc.campaign = c.id");
 
-            echo "<form action='enroll-process.php' method='POST'>";
-
-                $index = 0;
+            echo "<form action='enroll-process.php' method='POST'>
+                <div class='card-deck'>";
+            
                 while ($arr = pg_fetch_array($res)) {
-                    echo "$index) -> $arr[1] ( $arr[2] | $arr[3] to $arr[4])";
-                    echo "<button type='submit' name='enroll' value='$arr[0]'>Enroll</button> </a><br>";
+                    echo "<div class='card bg-secondary text-light'> 
+                        <div class='card-body p-4'>
+                        <h4 class='card-title'>$arr[1]</h4>
+                        <table class='card-text'>
+                        <tr><th>Join before</th><td>$arr[2]</td><tr>
+                        <tr><th>Open date</th><td>$arr[3]</td><tr>
+                        <tr><th>Close date</th><td>$arr[4]</td><tr>
+                        </table> <br>
+                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='enroll' value='$arr[0]'>Enroll</button> </a><br>
+                        </div></div>";   
+                                         
                     $index++;
                 }
-            echo "</form>";
+            echo "</form></div></div></div>
+                <div class='row'>
+                <div class='col'>
+                <h2> Open Campaigns</h2>";
 
-            echo "<br><b> OPEN CAMPAIGNS:</b><br>";
             $res = pg_query("SELECT c.id, c.name, c.open_date, c.close_date 
                         FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id
-                        WHERE c.open_date <= '$currentDate' and
-                            c.close_date >= '$currentDate'");
+                        WHERE c.open_date <= CURRENT_DATE and
+                            c.close_date >= CURRENT_DATE");
 
-            echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>";
-            echo "<table>"; 
+            echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>
+                <div class='card-deck'>";
 
             while ($arr = pg_fetch_array($res)) {
-                echo "<tr>";
-                echo "<td>$arr[1]</td> <td>$arr[2]</td> <td>$arr[3]</td> <td><button name='campaign' value='{$arr[0]}'>Do tasks!</a></td>";
-                echo "</tr>";
+                echo "<div class='card bg-secondary text-light'> 
+                        <div class='card-body p-4'>
+                        <h4 class='card-title'>$arr[1]</h4>
+                        <table class='card-text'>
+                        <tr><th>Join before</th><td>$arr[2]</td><tr>
+                        <tr><th>Open date</th><td>$arr[3]</td><tr>
+                        <tr><th>Close date</th><td>$arr[4]</td><tr>
+                        </table> <br>
+                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Play!</button>
+                        </div></div>"; 
             }
 
             echo "</table>";
-            echo "</form>";
+            echo "</form></div></div></div>";
 
-            echo "<b> FINISHED CAMPAIGNS: </b>";
+            echo "<h2> Finished Campaigns </h2>";
             $res = pg_query($db_conn, "SELECT id, name, close_date
                             FROM campaign c JOIN worker_campaign wc
                             ON wc.worker = $id AND wc.campaign = c.id
-                            WHERE c.finished = TRUE");
+                            WHERE c.close_date < CURRENT_DATE");
 
-            echo "<form action='/Crowdsourcing/worker-statistics.php' method='post'><table>";
+            echo "<div class='row'>
+                    <div class='col'>
+                        <form action='/Crowdsourcing/do-campaign-tasks.php' method='post'>
+                        <div class='card-deck'>";
             while ($arr = pg_fetch_array($res)) {
-                echo "<tr>" . "<td>$arr[1]</td> <td>$arr[2]</td><td> <button name='stats' value='$arr[0]'>Show stats</button>" . "</tr>";
+                echo "<div class='card bg-secondary text-light'> 
+                        <div class='card-body p-4'>
+                        <h4 class='card-title'>$arr[1]</h4>
+                        <table class='card-text'>
+                        <tr><th>Close date</th><td>$arr[2]</td><tr>
+                        </table> <br>
+                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Show stats</button>
+                        </div></div>"; 
             }
-            echo "</table>";
+            echo "</div></div></div>";
         ?>
     </div>
-
-    <a href="login/logout.php">Logout </a>
     </form>
 </body>
 </html>
