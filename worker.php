@@ -63,14 +63,13 @@
                 <div class='col'>
                 <h2> Open Campaigns</h2>";
 
-            $res = pg_query("SELECT c.id, c.name, c.open_date, c.close_date 
+            $res = pg_query("SELECT c.id, c.name, reg_period, c.open_date, c.close_date 
                         FROM campaign c JOIN worker_campaign wc 
                         ON wc.worker = '$id' and wc.campaign = c.id
                         WHERE c.open_date <= CURRENT_DATE and
                             c.close_date >= CURRENT_DATE");
 
-            echo "<form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>
-                <div class='card-deck'>";
+            echo "<div class='card-deck'>";
 
             while ($arr = pg_fetch_array($res)) {
                 echo "<div class='card bg-secondary text-light'> 
@@ -81,7 +80,12 @@
                         <tr><th>Open date</th><td>$arr[3]</td><tr>
                         <tr><th>Close date</th><td>$arr[4]</td><tr>
                         </table> <br>
+                        <form method='post' action='/Crowdsourcing/campaign/do-campaign-tasks.php'>
                         <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Play!</button>
+                        </form>
+                        <form method='post' action='/Crowdsourcing/worker/worker-statistics.php'>
+                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Show report</button>
+                        </form>
                         </div></div>"; 
             }
 
@@ -96,16 +100,16 @@
 
             echo "<div class='row'>
                     <div class='col'>
-                        <form action='/Crowdsourcing/do-campaign-tasks.php' method='post'>
+                        <form action='/Crowdsourcing/worker/worker-statistics.php' method='post'>
                         <div class='card-deck'>";
             while ($arr = pg_fetch_array($res)) {
                 echo "<div class='card bg-secondary text-light'> 
                         <div class='card-body p-4'>
                         <h4 class='card-title'>$arr[1]</h4>
                         <table class='card-text'>
-                        <tr><th>Close date</th><td>$arr[2]</td><tr>
+                        <tr><th>Closed on</th><td>$arr[2]</td><tr>
                         </table> <br>
-                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Show stats</button>
+                        <button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign' value='$arr[0]'>Show report</button>
                         </div></div>"; 
             }
             echo "</div></div></div>";
