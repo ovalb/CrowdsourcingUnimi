@@ -8,6 +8,7 @@
     
     $req_id = $_SESSION['id'];
     $req_username = $_SESSION['username'];
+    unset($_SESSION['campaign']);
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval") 
                 or redirect("index.php");
 ?>
@@ -44,7 +45,7 @@
             //if it has permission, show campaigns
 
             echo "<h2> Campaigns </h2>";
-            $campaigns = pg_query("SELECT c.name, reg_period, open_date, close_date 
+            $campaigns = pg_query("SELECT c.id, c.name, reg_period, open_date, close_date 
                                 FROM campaign c
                                 WHERE requester = $req_id 
                                 and close_date >= CURRENT_DATE");
@@ -53,19 +54,21 @@
                 echo "No open campaign present. Press the button below.";
             else {
 
-                echo "<div class='card-deck'>";
+                echo "<form action='campaign/create-tasks-form.php' method='post'>
+                    <div class='card-deck'>";
 
                 while ($row = pg_fetch_row($campaigns)) {
-                    echo "<div class='card bg-secondary text-light'>" . 
-                        "<div class='card-body p-4'>" .
-                        "<h4 class='card-title'>" . $row[0] . "</h4>" .
-                        "<table class='card-text'>" . 
-                        "<tr><th><b>Join before</b><th>"  . $row[1] . "</th><tr>" .
-                        "<tr><th><b>Open date</b><th>" . $row[2] . "</th><tr>" .
-                        "<tr><th><b>Close date</b><th>" . $row[3] . "</th><tr>" .
-                        "</table></div></div>";
+                    echo "<div class='card bg-secondary text-light'> 
+                        <div class='card-body p-4'>
+                        <h4 class='card-title'>$row[1]</h4>
+                        <table class='card-text'>
+                        <tr><th>Join before</th><td>$row[2]</td><tr>
+                        <tr><th>Open date</th><td>$row[3]</td><tr>
+                        <tr><th>Close date</th><td>$row[4]</td><tr></table><br>
+                        <button class='btn btn-outline-light btn-block' type='submit' name='campaign' value='$row[0]'>Add task</button>
+                        </div></div>";
                 }
-                echo "</div>";
+                echo "</form></div>";
             }
         ?>
         </div>
@@ -91,9 +94,9 @@
                         "<div class='card-body p-4'>" .
                         "<h4 class='card-title'>" . $row[1] . "</h4>" .
                         "<table class='card-text'>" . 
-                        "<tr><th><b>Join before</b><th>"  . $row[2] . "</th><tr>" .
-                        "<tr><th><b>Open date</b><th>" . $row[3] . "</th><tr>" .
-                        "<tr><th><b>Close date</b><th>" . $row[4] . "</th><tr></table><br>" .
+                        "<tr><th><b>Join before</b></th><td>"  . $row[2] . "</td><tr>" .
+                        "<tr><th><b>Open date</b></th><td>" . $row[3] . "</td><tr>" .
+                        "<tr><th><b>Close date</b></th><td>" . $row[4] . "</td><tr></table><br>" .
                         "<button class='btn btn-md btn-outline-light btn-block' type='submit' name='campaign_id' value=$row[0]>View results</button>" .
                         "</div></div></form>";
                 }

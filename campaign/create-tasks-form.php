@@ -5,9 +5,11 @@
 
     if (!(isset($_SESSION['id']) && isset($_SESSION['username'])))
         redirect("requester.php");
-    
-    if (!isset($_SESSION['campaign']))
-        redirect("create-campaign-form.php");
+
+    $req_username = $_SESSION['username'];
+
+    if (isset($_POST['campaign']))
+        $_SESSION['campaign'] = $_POST['campaign'];
 ?>
 
 <html>
@@ -22,6 +24,9 @@
     <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
 </head>
 <body style='text-align:center; background:#efefef;'>
+    <header> 
+        <?php require_once('../includes/requester-header.php'); ?>
+    </header>
     <h2>Create Tasks</h2>
 
     <main class='container' style='width:40%'>
@@ -58,7 +63,9 @@
         <br><br>
         <div class='row'>
         <div class='col-md-6'>
-        <button class='btn btn-lg btn-primary' type="submit" name="add" value='Add Task'>Add Task</button>
+            <?php 
+                echo "<button class='btn btn-lg btn-primary' type='submit' name='add_task'>Add Task</button>";
+            ?>
         </div>
 
         <div class='col-md-6'>

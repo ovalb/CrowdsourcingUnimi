@@ -6,7 +6,7 @@
     if (!(isset($_SESSION['id'])))
         redirect("../index.php");
     
-    if (!isset($_POST['add']))
+    if (!isset($_POST['add_task']))
         redirect("../index.php");
 
 

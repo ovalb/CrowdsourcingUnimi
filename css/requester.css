@@ -12,12 +12,10 @@ h2 {
     margin-top: 20px;
 }
 
-
 table {
     text-align: right;
     margin-bottom: 5px;
 }
-th {
-    font-weight: normal;
+/* th {
     padding-left: 7px;
-}
+} */

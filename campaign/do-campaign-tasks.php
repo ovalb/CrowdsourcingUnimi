@@ -11,6 +11,7 @@
         $_SESSION['campaign'] = $_POST['campaign'];
     }
 
+    $username = $_SESSION['username'];
     $campaign_id = $_SESSION['campaign'];
 
     // print "worker id" . $worker_id;
@@ -27,15 +28,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+            integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+
     </head>
 
     <body>
         <header> 
-        <span>
-            <?php 
-            echo ("WORKER: You are logged in as " . $_SESSION['username']);
-            ?>    
-        </span>
+        <?php require_once('../includes/worker-header.php'); ?>
+        </header>
+
+        <main class='container'>
+            <div class='row'>
+                <div class='col-md-8 offset-md-2 text-center'>
         <?php
             pg_query($db_conn, "SELECT assign_task_affinity($worker_id, $campaign_id)");
 
@@ -62,20 +67,28 @@
                 echo "<h5>$task_description</h5>";
 
                 // list options
-                echo "<form action='execute-task.php' method='post'>";
+                echo "<form action='execute-task.php' method='post'>
+                    <ul style='list-style:none; text-align:left; margin-left:200px;'>";
                 for ($i=0; $i < pg_num_rows($query_result); $i++) {
                     $option_id = pg_fetch_result($query_result, $i, 0);
                     $option_name = pg_fetch_result($query_result, $i, 1);
-                    echo "<input type='radio' name='sel_option' value=$option_id>" . $option_name;
+                    if ($i == 0)
+                        echo "<li><input type='radio' name='sel_option' value=$option_id checked> $option_name</li>";
+                    else
+                        echo "<li><input type='radio' name='sel_option' value=$option_id> $option_name</li>";
                 }
+                echo "</ul>";
 
-                echo "<button type='submit'> Confirm</button>";
+                echo "<button class='btn btn-primary' type='submit'> Confirm</button>";
                 // echo "<input type='submit' name='skip'> Skip";
                 // echo "<input type='submit' name='finish'> Finish";
 
                 echo "</form>";
                 }
         ?>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
 

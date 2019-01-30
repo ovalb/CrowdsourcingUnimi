@@ -1,5 +1,5 @@
 <?php 
-        echo "<nav class='navbar navbar-light bg-light'>" .  
+        echo "<nav class='navbar navbar-light bg-light' style='margin-bottom:50px;'>" .  
         "<span class='navbar-brand'> <b>Requester: </b>" . $req_username . "</span>" .
-        "<a href='login/logout.php'>Logout </a></nav>";
+        "<a href='/Crowdsourcing/login/logout.php'>Logout </a></nav>";
     ?> 
