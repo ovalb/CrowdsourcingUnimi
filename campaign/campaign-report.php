@@ -10,10 +10,8 @@
     $req_username = $_SESSION['username'];
     $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval");
 
-    
     // generates campaign result
     $c_id = $_POST['campaign_id'];
-    $result = pg_query($db_conn, "SELECT close_campaign($c_id)");
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +50,12 @@
             FROM task t LEFT JOIN task_option o ON t.result = o.id
             WHERE campaign = $c_id;";
 
-        $query_result = pg_query($db_conn, $query);
+
+        $res = pg_query($db_conn, "SELECT tasks_percentage($c_id)");
+        $task_percentage = pg_fetch_result($res, 0);
 
         echo "<h2> Tasks Results</h2>";
+        echo "<p>Il $task_percentage % dei task ha ottenuto un risultato valido</p>";
         echo "<table class='table table-bordered'>" .
             "<thead><tr>
             <th scope='col'>Title</th>
@@ -63,6 +64,7 @@
             </tr></thead>";
         echo "<tbody>";
 
+        $query_result = pg_query($db_conn, $query);
         while ($arr = pg_fetch_array($query_result)) {
             $t_title = $arr[0];
             $t_description = $arr[1];

@@ -5,7 +5,7 @@
 \i AssignTaskAffinity.pgsql
 \i AssignTaskResult.pgsql
 \i AssignScoreWorker.pgsql
-
+\i TaskResultPercentage.pgsql
 CREATE SCHEMA crypto; 
 CREATE EXTENSION pgcrypto WITH SCHEMA crypto;
 

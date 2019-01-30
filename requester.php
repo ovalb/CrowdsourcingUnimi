@@ -45,6 +45,7 @@
             //if it has permission, show campaigns
 
             echo "<h2> Campaigns </h2>";
+
             $campaigns = pg_query("SELECT c.id, c.name, reg_period, open_date, close_date 
                                 FROM campaign c
                                 WHERE requester = $req_id 
@@ -54,21 +55,33 @@
                 echo "No open campaign present. Press the button below.";
             else {
 
-                echo "<form action='campaign/create-tasks-form.php' method='post'>
-                    <div class='card-deck'>";
+                echo "<div class='card-deck'>";
 
                 while ($row = pg_fetch_row($campaigns)) {
+                    $res = pg_query($db_conn, "SELECT count(*) FROM task WHERE campaign = $row[0]");
+                    $total_task_num = pg_fetch_result($res, 0);
+                    $res = pg_query($db_conn, "SELECT count(*) FROM task WHERE campaign = $row[0]
+                        AND result IS NOT NULL");
+                    $completed_task_num = pg_fetch_result($res, 0);
+
                     echo "<div class='card bg-secondary text-light'> 
                         <div class='card-body p-4'>
                         <h4 class='card-title'>$row[1]</h4>
                         <table class='card-text'>
+                        <tr><th>Tasks done</th><td>$completed_task_num/$total_task_num<td></tr>
                         <tr><th>Join before</th><td>$row[2]</td><tr>
                         <tr><th>Open date</th><td>$row[3]</td><tr>
                         <tr><th>Close date</th><td>$row[4]</td><tr></table><br>
-                        <button class='btn btn-outline-light btn-block' type='submit' name='campaign' value='$row[0]'>Add task</button>
-                        </div></div>";
+                            <form action='campaign/create-tasks-form.php' method='post'>
+                                <button class='btn btn-outline-light btn-block' type='submit' name='campaign' value=$row[0]>Add task</button>
+                            </form>
+                            <form action='campaign/campaign-report.php' method='post'>
+                                <button class='btn btn-outline-light btn-block' type='submit' name='campaign_id' value='$row[0]'>View report</button>
+                            </form>
+                        </div>
+                        </div>";
                 }
-                echo "</form></div>";
+                echo "</div>";
             }
         ?>
         </div>
@@ -89,11 +102,18 @@
                 $i = 0;
                 echo "<div class='card-deck'>";
                 while ($row = pg_fetch_row($result)) {
+                    $res = pg_query($db_conn, "SELECT count(*) FROM task WHERE campaign = $row[0]");
+                    $total_task_num = pg_fetch_result($res, 0);
+                    $res = pg_query($db_conn, "SELECT count(*) FROM task WHERE campaign = $row[0]
+                        AND result IS NOT NULL");
+                    $completed_task_num = pg_fetch_result($res, 0);
+
                     echo "<form method='post' action='campaign/campaign-report.php'>" .
                         "<div class='card bg-secondary text-light'>" . 
                         "<div class='card-body p-4'>" .
                         "<h4 class='card-title'>" . $row[1] . "</h4>" .
                         "<table class='card-text'>" . 
+                        "<tr><th>Tasks done</th><td>$completed_task_num/$total_task_num<td></tr>" .
                         "<tr><th><b>Join before</b></th><td>"  . $row[2] . "</td><tr>" .
                         "<tr><th><b>Open date</b></th><td>" . $row[3] . "</td><tr>" .
                         "<tr><th><b>Close date</b></th><td>" . $row[4] . "</td><tr></table><br>" .
@@ -105,6 +125,7 @@
         ?>
         <br> <br>
         <a class='btn btn-lg btn-primary' href="campaign/create-campaign-form.php">New campaign </a>
+        <br><br><br><br>
         </div>    
     </div>    
     </div>

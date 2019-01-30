@@ -16,6 +16,10 @@ table {
     text-align: right;
     margin-bottom: 5px;
 }
+
+button {
+    margin-top:5px;
+}
 /* th {
     padding-left: 7px;
 } */

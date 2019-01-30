@@ -10,6 +10,8 @@
 
     if (isset($_POST['campaign']))
         $_SESSION['campaign'] = $_POST['campaign'];
+
+    $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval"); 
 ?>
 
 <html>
@@ -19,7 +21,7 @@
     <title>Create Tasks</title>
     <link rel='stylesheet' href='../node_modules/chosen-js/chosen.css' />
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-    integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+        integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
 </head>
@@ -28,7 +30,13 @@
         <?php require_once('../includes/requester-header.php'); ?>
     </header>
     <h2>Create Tasks</h2>
-
+    <?php
+        $c_id = $_SESSION['campaign'];
+        $res = pg_query($db_conn, "SELECT name FROM campaign WHERE id = $c_id");
+        $campaign_name = pg_fetch_result($res, 0, 0);
+        echo "<h4>for $campaign_name</h4>";
+    ?> 
+    <br>
     <main class='container' style='width:40%'>
     
     <form id='task-form' action='validate-task.php' method='POST'>
@@ -50,7 +58,6 @@
 
         <select name='keywords[]' form='task-form' class=" form-control chosen-select" data-placeholder="Choose keywords..." multiple >
             <?php
-                $db_conn = pg_connect("host=localhost port=5432 dbname=crowdsourcing user=onval"); 
                 $result = pg_query($db_conn, "SELECT id, name FROM keyword;");
                 while ($arr = pg_fetch_array($result)) {
                     $id = $arr[0];
