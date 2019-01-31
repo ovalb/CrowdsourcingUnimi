@@ -15,6 +15,6 @@
         $query = "INSERT INTO worker_keyword (worker, keyword, level)
                     VALUES ($id, $keyword, $level)";
 
-        $result = pg_query($db_conn, $query) or redirect("worker-details.php?result=failed");
-        redirect('worker-details.php');
+        $result = pg_query($db_conn, $query) or redirect("worker/worker-details.php?result=failed");
+        redirect('worker/worker-details.php');
 ?>

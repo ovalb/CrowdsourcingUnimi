@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require 'utility/redirect.php';
+    require '../utility/redirect.php';
 
     if (!isset($_SESSION['username']))
         redirect("index.php");
@@ -23,7 +23,7 @@
 </head>
 <body class='text-center'>
     <header> 
-        <?php require_once("includes/worker-header.php");?>    
+        <?php require_once("../includes/worker-header.php");?>    
     </header>  
 
     <div class='container' style='width:40%; margin-bottom:160px;'>
@@ -32,7 +32,7 @@
 
     <h2 style='margin-top:40px;'>Your keywords</h2>
 
-        <form action='remove-keyword.php' method='post'>
+        <form action='../remove-keyword.php' method='post'>
         <table class='table table-borderless'>
         <thead>
         <tr>
@@ -58,7 +58,7 @@
 
         </tbody></table></form>        
 
-        <form id='addkeyword' action='add-keyword.php' method='post'>
+        <form id='addkeyword' action='../add-keyword.php' method='post'>
 
         <h5 style='margin-top:50px'> Add one or more skills/competencies </h5>
         <ul id="added_levels"></ul>
