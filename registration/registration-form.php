@@ -19,7 +19,7 @@
         <div class='container'>
         <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
-        <form id='registration' action="registration-process.php" name='reg_form' method="post">
+        <form id='registration' action="registration/registration-process.php" name='reg_form' method="post">
             <?php require_once('../includes/work-req-radio.php'); ?>
             <p></p>
 
