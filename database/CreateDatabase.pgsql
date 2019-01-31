@@ -33,8 +33,8 @@ CREATE TABLE campaign (
     close_date date NOT NULL,
     task_threshold integer NOT NULL,
     min_worker_num integer NOT NULL,
-    finished boolean DEFAULT FALSE NOT NULL
-    UNIQUE (name, requester),
+    finished boolean DEFAULT FALSE NOT NULL,
+	UNIQUE (name, requester),
     FOREIGN KEY (requester) REFERENCES requester(id) 
 );
 

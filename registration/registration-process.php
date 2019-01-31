@@ -23,6 +23,7 @@
                     or redirect("registration-form.php?result=connect_err");
 
     $query = "SELECT insert_user('$username', '$password', '$user_type')";
-    $query_result = pg_query($db_conn, $query) or redirect("registration-form.php?result=insert_err");
+    $query_result = pg_query($db_conn, $query);
+    //  or redirect("registration-form.php?result=insert_err");
     redirect("registration-success.php");
 ?>

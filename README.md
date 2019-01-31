@@ -16,8 +16,7 @@ Web app sviluppata utilizzando i linguaggi PHP ed il database Postgresql per il 
 - TASK_OPTION (<b>id</b>, name, task)
 *a task MUST have at least two options. This constraint cant be represented by Relational schema*
 - TASK_KEYWORD (<b>task, keyword</b>)\*a task MUST have a keyword associated with it. This - constraint cannot be represented by Relational schema*
-- WORKER_KEYWORD(<b>worker, keyword</b>, level)
- *a worker MUST have a keyword associated with it. This  constraint cannot be represented by Relational schema*
+- WORKER_KEYWORD(<b>worker, keyword</b>, level>
 - KEYWORD (<b>id</b>, name, kind)
 
 <b> Algoritmo per l'assegnazione dei task</b>
@@ -41,4 +40,3 @@ Il sistema assegnerá i task nel seguente ordine:
 
 ### TOP 10 WORKERS
 I lavoratori saranno classificati in base al loro score.
-<!-- Se due worker hanno lo stesso punteggio, verrá scelto quello con più task eseguiti complessivamente.  -->
